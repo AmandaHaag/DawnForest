@@ -6,7 +6,7 @@ class_name Player
 onready var player_sprite: Sprite = get_node("Sprite")
 ###        Wall slide do personagem 14/06/20      ###
 onready var wall_ray:RayCast2D = get_node("WallRay")
-#####################################################
+onready var stats:Node = get_node("Stats")
 var velocity: Vector2 # Vetor 2D para mover o personagem
 
 # Variaveis de exportação (podemos alterar pelo painel)
@@ -34,6 +34,8 @@ var can_track_input:bool = false
 ###        Wall slide do personagem 14/06/20      ###
 var on_wall:bool = false
 var not_on_wall:bool = true
+var dead:bool = false
+var on_hit:bool = false
 ######################################################
 # game loop
 func _physics_process(delta):
@@ -58,20 +60,24 @@ func attack()-> void:
 func crouch()-> void:
 	if Input.is_action_pressed("ui_crouch") and is_on_floor() and not defending:
 		crouching = true
+		stats.shielding = false
 		can_track_input = false
 		defending = false
 	elif not defending:
 		crouching = false
 		can_track_input = true
+		stats.shielding = false
 		player_sprite.crouch_off = true
 		
 func defense()->void:
 	if Input.is_action_pressed("ui_defense") and is_on_floor() and not crouching:
 		defending = true
 		can_track_input = false
+		stats.shielding = false
 	elif not crouching:
 		defending = false
 		can_track_input = true
+		stats.shielding = false
 		player_sprite.shield_off = true
 
 

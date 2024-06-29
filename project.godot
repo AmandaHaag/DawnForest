@@ -8,6 +8,34 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "ParallaxBackground",
+"class": "Background",
+"language": "GDScript",
+"path": "res://scripts/Background.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://scripts/Player.gd"
+}, {
+"base": "Node",
+"class": "PlayerStats",
+"language": "GDScript",
+"path": "res://scripts/Stats.gd"
+}, {
+"base": "Sprite",
+"class": "SpritePlayer",
+"language": "GDScript",
+"path": "res://scripts/Texture.gd"
+} ]
+_global_script_class_icons={
+"Background": "",
+"Player": "",
+"PlayerStats": "",
+"SpritePlayer": ""
+}
+
 [application]
 
 config/name="Dawn Forest"
